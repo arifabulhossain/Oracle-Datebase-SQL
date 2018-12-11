@@ -1,0 +1,27 @@
+practise2.1 
+============================01==========================
+select last_name ,salary
+from employees
+where salary>12000;
+==========================02============================
+select last_name,department_id
+from employees
+where employee_id = 176;
+========================03===============================
+SELECT last_name, salary 
+FROM employees
+WHERE salary NOT BETWEEN 5000 AND 1200;
+========================04========================
+SELECT last_name,job_id,hire_date
+FROM employees
+WHERE last_name IN ('matos','taylor')
+ORDER BY hire_date;
+========================05==========================
+SELECT last_name,hire_date
+FROM employees
+WHERE department_id IN (20,50)
+ORDER BY last_name ASC;
+
+
+
+
