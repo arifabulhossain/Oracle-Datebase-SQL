@@ -1,0 +1,25 @@
+PRACTISE 11.1 :
+part - 01 :
+========================01==========================
+CREATE OR REPLACE VIEW employees_vu AS SELECT   employee_id,
+last_name  employee, department_id FROM EMPLOYEES;
+========================02===========================
+SELECT *  FROM employees_vu;
+DROP  VIEW employees_vu;
+========================03===========================
+SELECT employee, department_id FROM employees_vu;
+========================04===========================
+CREATE VIEW DEPT50 AS 
+SELECT employee_id empno , last_name employee, department_id deptno FROM employees 
+where department_id = 50
+WITH CHECK OPTION CONSTRAINT emp_dept_50;
+========================05===========================
+desc dept50;
+select * from dept50;
+========================06==========================
+UPDATE DEPT50
+SET deptno = 80
+where employee = 'Matos';
+It's give error message.
+
+
