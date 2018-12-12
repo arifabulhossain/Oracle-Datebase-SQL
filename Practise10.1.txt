@@ -1,0 +1,56 @@
+practise10.1 :
+========================01=========================
+CREATE TABLE dept (id number(7) CONSTRAINT department_id_pk  PRIMARY KEY,name varchar2(25));
+DESC dept;
+========================02==========================
+INSERT INTO dept SELECT department_id,department_name
+FROM departments;
+
+SELECT * FROM departments;
+========================03==========================
+CREATE TABLE emp (	id number(7),
+last_name varchar2(25),
+first_name varchar2(25),
+dept_id number(7) CONSTRAINT emp_dept_id_FK REFERENCES dept(id));
+DESCRIBE emp;
+========================04==========================
+CREATE TABLE employees1 AS 
+select employee_id id,first_name,last_name,salary,department_id dept_id
+from employees;
+DESCRIBE employees1;
+========================05==========================
+
+ALTER TABLE employees1 READ ONLY;
+
+========================06==========================
+INSERT INTO employees1 (id,last_name,salary,dept_id)
+values (34,'sovro',5000,10);
+
+select * from employees1;
+
+* It's give error message;
+
+========================07==========================
+
+ALTER TABLE employees1 READ WRITE;
+
+INSERT INTO employees1 (id,last_name,salary,dept_id)
+values (34,'sovro',5000,10);
+
+select * from employees1;
+========================08==========================
+DROP TABLE employees1;
+
+DESCRIBE employees1;
+
+
+
+
+
+
+
+
+
+
+
+
