@@ -1,0 +1,30 @@
+==============FUNCTION====================
+CREATE OR REPLACE FUNCTION totalcustomers
+RETURN number IS 
+   TOTAL NUMBER(2) :=0;
+BEGIN 
+   SELECT count(*) into total
+   FROM customers;
+RETURN total;
+END;
+/
+
+=============================================
+============table============================
+create table customers ( id number(2) primary key,
+Name varchar2(50),
+Age  number(2),
+Address varchar2(50),
+Salary  number(2));
+
+================================================
+================calling function================
+
+DECLARE 
+   c NUMBER(2);
+BEGIN 
+    c := totalcustomers();
+     dbms_output.put_line('Total Number of customer: ' || c);
+END;
+/
+==========================================================
