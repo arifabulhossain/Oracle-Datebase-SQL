@@ -1,0 +1,22 @@
+Practise 11.1 
+Part 02:
+=========================07=====================
+CREATE SEQUENCE dept_id_seq
+START WITH 200 
+INCREMENT BY 10
+MAXVALUE 10000;
+
+=================================================
+==================08=============================
+INSERT INTO dept 
+values (dept_id_seq.nextval,'Education');
+
+INSERT INTO dept 
+values (dept_id_seq.nextval,'Administration');
+===================================================
+====================09=============================
+CREATE INDEX dept_name_idx ON dept (Name);
+===================================================
+=====================10============================
+CREATE SYNONYM dept1 FOR dept;
+===================================================
