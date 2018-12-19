@@ -1,0 +1,35 @@
+
+=================TABLE=============
+CREATE TABLE CUSTOMER 
+(id number(5) primray key,
+ name varchar2(20) NOT NULL,
+ mobile varchar2(11) NOT NULL,
+ country varchar2(50) Default 'BD');
+ =================PROCEDURE============================
+ CREATE OR REPLACE PROCEDURE insertCustomer(
+ p_id IN CUSTOMER. id%TYPE,
+ p_name IN CUSTOMER.name%TYPE,
+ p_mobile IN CUSTOMER.mobile%TYPE
+ p_country IN CUSTOMER.country%TYPE)
+ 
+ IS
+ BEGIN
+ INSERT INTO CUSTOMER (id, name, mobile, country)
+ VALUES (p_id, p_name, p_mobile, p_country);
+ COMMIT;
+ END;
+ /
+ ======================UPDATE=================================
+CREATE OR REPLACE PROCEDURE updateCUSTOMER(
+p_id IN CUSTOMER.id%TYPE,
+ p_name IN CUSTOMER.name%TYPE,
+ p_mobile IN CUSTOMER.mobile%TYPE,
+ p_country IN CUSTOMER.country%TYPE)
+ 
+IS
+BEGIN
+update customer SET name=p_name,mobile=p_mobile,country=p_country Where id=p_id; 
+commit;
+end;
+/
+=====================================================================

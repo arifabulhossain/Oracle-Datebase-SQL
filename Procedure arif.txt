@@ -1,0 +1,45 @@
+                  
+======================Table=====================================
+CREATE TABLE CUSTOMER2 ( 
+  id NUMBER (5) PRIMARY KEY,
+  name VARCHAR2 (20) NOT NULL,
+  mobile VARCHAR2 (11) NOT NULL,
+  country VARCHAR2 (50) Default 'BD');
+ 
+====================Procedure====================================
+CREATE OR REPLACE PROCEDURE insertCustomer2(
+   p_id IN CUSTOMER2.id%TYPE,
+    p_name IN CUSTOMER2.name%TYPE,
+    p_mobile IN CUSTOMER2.mobile%TYPE,
+    p_country IN CUSTOMER2.country%TYPE)
+
+IS 
+BEGIN 
+   INSERT INTO CUSTOMER2 (id,name,mobile,country)
+VALUES (p_id,p_name,p_mobile,p_country);
+COMMIT;
+END;
+/
+
+========================Insert Data======================================
+  
+ BEGIN
+ insertCustomer2(1,'A','O1922','BD');
+ END;
+ /
+
+======================================================================
+ ======================UPDATE=================================
+CREATE OR REPLACE PROCEDURE updateCUSTOMER2(
+p_id IN CUSTOMER.id%TYPE,
+ p_name IN CUSTOMER2.name%TYPE,
+ p_mobile IN CUSTOMER2.mobile%TYPE,
+ p_country IN CUSTOMER2.country%TYPE)
+ 
+IS
+BEGIN
+update customer2 SET name=p_name,mobile=p_mobile,country=p_country Where id=p_id; 
+commit;
+end;
+/
+=====================================================================
