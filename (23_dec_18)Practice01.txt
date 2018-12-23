@@ -1,0 +1,32 @@
+Practise 01:
+================create table==================
+create table emp (e_id number(5),
+e_name varchar2(20),
+salary number(8,2),
+hire_date date default sysdate,
+address varchar2(20));
+
+===========Primary key===================
+alter table emp add constraint emp_e_id_pk primary key(e_id);
+===============data insert=======================
+insert into emp (e_id,e_name,salary,hire_date,address)  values (&e_id,'&e_name',&salary,'&hire_date','&address');
+================alter table====================
+alter table emp add (phone number(11),job_title varchar2(20));
+=====================make quary===============
+select e_name, job_title,salary,salary+(salary*.3) from emp;
+================min salary====================
+select e_name, salary from emp 
+where salary =( select min(salary) from emp);
+=============update================
+update emp set job_title = 'manager';
+==================view===================
+create view emp_vew as select e_id,e_name,salary,hire_date,address from emp;
+=====================sequence==============
+create sequence emp_e_id_seq 
+increment by 1
+start with 10 maxvalue 10000
+nocache 
+nocycle;
+===========index==========================
+create index emp_e_id_ind on emp(e_name);
+===========================================
