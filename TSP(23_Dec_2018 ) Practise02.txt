@@ -1,0 +1,47 @@
+
+TSP:23_DeC_2018 Practise 02 :
+=================Create Table===============================
+create table emp2 ( e_id number(4),
+e_name varchar2(20),
+salary number(8,2),
+hire_date varchar2(20),
+address varchar2(20));
+
+==================Alter Table==============================
+alter table emp2 add constraint emp_id_pk primary key(e_id);
+
+=======================Insert Data============================
+insert into emp2 (e_id,e_name,salary,hire_date,address) values (&e_id,'&e_name',&salary,'&hire_date','&address');
+=========================================================
+
+alter table emp2 add (phone number(11),job_title varchar2(20));
+
+=========================Make Quary==============================
+
+select e_name,address,phone, salaty, salary+(salary*.3) as Bonous from epm2;
+
+=============================Min Salary==============================================
+select e_name,phone, salary from emp2
+where salary = (select min(salary) from emp2);
+
+===============================Update==========================================
+update  emp2 set Job_title = 'manager';
+
+===============================View===========================
+create view emp_view as select e_id,e_name,salary,hire_date,address,phone, job_title from emp2;
+
+==============================Sequence===============================================
+
+create sequence emp2_e_id_seq 
+increment by 1
+start with 6 
+maxvalue 1000
+nocache
+nocycle;
+==============================Index===================================================
+
+create index e_id_idn on emp2(e_name);
+
+===============================Synonym===============================================
+create synonym syn_emp2 for emp2;
+=====================================================================================
