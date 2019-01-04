@@ -1,0 +1,35 @@
+PreExamPractise 02 :
+========================create table==========================================================
+create table shibchar ( id number(5),name varchar2(20),age number(3), country varchar2(20));
+=====================Create anaother table====================================================
+create table shibchar1 ( id1 number(5),name1 varchar2(20),age1 number(3), country1 varchar2(20));
+====================insert trigger===============================================================
+create or replace trigger ins_shib  after insert on shibchar
+for each row
+begin
+insert into shibchar1 values ( :new.id, :new.name, :new.age, :new.country);
+end;
+========================insert data===========================================
+insert into shibchar values (101, 'Arif', 24, 'Bangladesh');
+insert into shibchar values (102, 'Arifa', 25, 'Canada');
+===============================Update  Trigger==============================
+create or replace trigger ins_shib  before update on shibchar
+for each row
+begin
+insert into shibchar1 values ( :new.id, :new.name, :new.age, :new.country);
+end;
+================================update data======================================
+update shibchar set country = 'France'
+where id = 102;
+=====================delete Trigger=============================================
+create or replace trigger dlt_shib  before delete on shibchar
+for each row
+begin
+insert into shibchar1 values ( :old.id, :old.name, :old.age, :old.country);
+end;
+===============================delete data======================================
+delete  from shibchar 
+where id = 101;
+========================================================================================
+
+
