@@ -1,0 +1,31 @@
+create table/sequence/ synonym/index.
+=============================================================
+=================create user====================
+create user newyear identified by newyear;
+grant dba to newyear;
+grant all privileges to newyear;
+grant unlimited tablespace to Newyear;
+grant create session,create table,create view,create sequence,create trigger,create procedure to newyear;
+===============connect newyear========================
+connect user;
+pass:
+=========================create table=================================
+create table catagory (id number(4),cname varchar2(20));
+===============alter table===========================
+alter table catagory add constraint id_pk primary key(id);
+alter table catagory add constraint cname_uni unique(cname);
+==============another table=======================
+create table employee(
+	id number(7) primary key, name varchar2(55) not null,
+	salary number(9,2) check(salary>=25000), cat_id number(7),
+	country varchar2(55) default 'Bangladesh',
+	foreign key (cat_id) references catagory(id));
+======================create sequence==========================
+create sequence catagory_seq  increment by 5 start with 5 nocache nocycle;
+create sequence employee_seq  increment by 1 start with 100 nocache nocycle;
+====================create view===================
+create view cat_view as select id, cname from catagory;
+=================create index=====================
+create index idx_cat on catagory(id,cname);
+================create synonym============
+create synonym syn_cat for catagory;
