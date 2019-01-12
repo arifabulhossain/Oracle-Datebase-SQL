@@ -1,0 +1,37 @@
+==============create user=================
+create user arif identified by arif;
+grant dba to arif;
+grant all privileges to arif;
+grant unlimited tablespace to arif;
+create session,create table,create sequence,create trigger,create trigger,
+create view , create synonym to arif;
+================connect user===================
+connect arif;
+pass : arif
+
+===================create table====================
+create table catagory (id number(5),cname varchar2(25));
+==============alter table================
+alter table catagory add constraint id_pk primary key(id);
+alter table catagory add constraint canme_uni unique(cname);
+
+========================another table=============
+create table employee ( id number(4) primary key,name varchar2(30) not null,
+salary number(9,2) check(salary>=2500),cat_id number(20),country varchar2 
+default 'bangladesh', foreign key cat_id references catagory(id);
+============create sequence==============
+create sequence catagory_seq increment by 1 start with 100 maxvalue 10000 nocahe 
+nocycle;
+
+===================create view======================
+create view cat_view as select  id, cname from catagory;
+
+========================create index========
+create index cat_idx on catagory(id,cname);
+
+==================create synonym============
+create synonym cat_syn for catagory;
+============================================
+
+
+
